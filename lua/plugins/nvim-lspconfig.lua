@@ -16,7 +16,7 @@ return {
 		"hrsh7th/cmp-nvim-lsp", -- nvim-cmp source for LSP-based completion
 	},
 	config = function()
-		-- require("utils.diagnostics").setup()
-		-- require("servers")
+		require("utils.diagnostics").setup()
+		require("servers")
 	end,
 }
