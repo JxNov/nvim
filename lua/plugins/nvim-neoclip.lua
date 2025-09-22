@@ -64,5 +64,8 @@ return {
     })
 
     vim.keymap.set("n", "<leader>o", "<cmd>Telescope neoclip<CR>", { desc = "Telescope Neoclip" })
+
+    vim.keymap.set("n", "d", '"_d', { noremap = true })
+    vim.keymap.set("v", "d", '"_d', { noremap = true })
   end,
 }
