@@ -11,6 +11,7 @@
 --   > cmp-buffer (dep)                   : https://github.com/hrsh7th/cmp-buffer
 --   > cmp-path (dep)                     : https://github.com/hrsh7th/cmp-path
 --   > cmp-nvim-lsp-signature-help (dep)  : https://github.com/hrsh7th/cmp-nvim-lsp-signature-help
+--   > cmp-cmdline (dep)                  : https://github.com/hrsh7th/cmp-cmdline
 -- ================================================================================================
 
 return {
@@ -24,6 +25,7 @@ return {
 		"hrsh7th/cmp-buffer", -- nvim-cmp source for words from the current buffer
 		"hrsh7th/cmp-path", -- nvim-cmp source for filesystem paths
 		"hrsh7th/cmp-nvim-lsp-signature-help", -- function signatures
+		"hrsh7th/cmp-cmdline", -- Command-line completion
 	},
 	config = function()
 		local lspkind = require("lspkind")
@@ -69,6 +71,22 @@ return {
 				{ name = "path" },
 				{ name = "nvim_lsp_signature_help" },
 			},
+		})
+
+		cmp.setup.cmdline({ "/", "?" }, {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = {
+				{ name = "buffer" },
+			},
+		})
+
+		cmp.setup.cmdline(":", {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = cmp.config.sources({
+				{ name = "path" },
+			}, {
+				{ name = "cmdline" },
+			}),
 		})
 	end,
 }
