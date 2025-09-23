@@ -92,7 +92,7 @@ return {
             █████████ ██████████ █████████ █████ █████ ████ █████
           ███████████ ███    ███ █████████ █████ █████ ████ █████
          ██████  █████████████████████ ████ █████ █████ ████ ██████
-      ]],
+        ]],
 			},
 			sections = {
 				{ section = "header" },
@@ -101,7 +101,13 @@ return {
 					indent = 1,
 					padding = 1,
 				},
-				{ section = "recent_files", icon = " ", title = "Recent Files", indent = 3, padding = 2 },
+				{
+          section = "recent_files",
+          icon = " ",
+          title = "Recent Files",
+          indent = 3,
+          padding = 2,
+        },
 				{ section = "startup" },
 			},
 		},
