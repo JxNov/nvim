@@ -7,31 +7,45 @@
 -- ================================================================================================
 
 return {
-  "nvim-telescope/telescope.nvim",
-  tag = "0.1.8",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
-    {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-      config = function()
-        require("telescope").load_extension("fzf")
-      end,
-    },
-  },
-  keys = {
-    { "<leader>tf", "<cmd>Telescope find_files<cr>", desc = "Telescope Find Files" },
-    { "<leader>tg", "<cmd>Telescope live_grep<cr>",  desc = "Telescope Live Grep" },
-    { "<leader>tb", "<cmd>Telescope buffers<cr>",    desc = "Telescope Buffers" },
-    { "<leader>th", "<cmd>Telescope help_tags<cr>",  desc = "Telescope Help Tags" },
-  },
-  opts = {
-    defaults = {
-      layout_strategy = "flex",
-      layout_config = { prompt_position = "top" },
-      sorting_strategy = "ascending",
-    },
-  },
+	"nvim-telescope/telescope.nvim",
+	tag = "0.1.8",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"nvim-tree/nvim-web-devicons",
+		{
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
+			config = function()
+				require("telescope").load_extension("fzf")
+			end,
+		},
+	},
+	config = function()
+		require("telescope").setup({
+			defaults = {
+				layout_strategy = "horizontal",
+				layout_config = {
+					horizontal = { width = 0.8, height = 0.8, preview_width = 0.65 },
+				},
+				prompt_prefix = " ",
+				selection_caret = "➤ ",
+				entry_prefix = "  ",
+				initial_mode = "insert",
+				sorting_strategy = "ascending",
+			},
+		})
+	end,
+	keys = {
+		{ "<leader>tf", "<cmd>Telescope find_files<cr>", desc = "Telescope Find Files" },
+		{ "<leader>tg", "<cmd>Telescope live_grep<cr>", desc = "Telescope Live Grep" },
+		{ "<leader>tb", "<cmd>Telescope buffers<cr>", desc = "Telescope Buffers" },
+		{ "<leader>th", "<cmd>Telescope help_tags<cr>", desc = "Telescope Help Tags" },
+	},
+	opts = {
+		defaults = {
+			layout_strategy = "flex",
+			layout_config = { prompt_position = "top" },
+			sorting_strategy = "ascending",
+		},
+	},
 }
-

@@ -24,6 +24,7 @@ return function(capabilities)
 	local cpplint = require("efmls-configs.linters.cpplint") -- c/cpp linter
 	local clangformat = require("efmls-configs.formatters.clang_format") -- c/cpp formatter
 	local solhint = require("efmls-configs.linters.solhint") -- solidity linter
+	local php_cs_fixer = require("efmls-configs.formatters.php_cs_fixer") -- php-cs-fixer formatter
 
 	vim.lsp.config("efm", {
 		capabilities = capabilities,
@@ -47,6 +48,7 @@ return function(capabilities)
 			"typescript",
 			"typescriptreact",
 			"vue",
+      "php",
 		},
 		init_options = {
 			documentFormatting = true,
@@ -77,6 +79,7 @@ return function(capabilities)
 				typescript = { eslint_d, prettier },
 				typescriptreact = { eslint_d, prettier },
 				vue = { eslint_d, prettier },
+        php = { php_cs_fixer }
 			},
 		},
 	})
